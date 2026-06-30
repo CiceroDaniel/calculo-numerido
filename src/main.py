@@ -12,11 +12,13 @@ import math
 
 print("TRABALHO DE CALCULO NUMÉRICO - 2026.1")
 
-def f(x):
-    return x**3-x-2
-
 tolerancia = 0.000001
 max_iteracoes = 100
+
+
+def f(x):
+    return math.sin(x)
+
 
 
 while True: 
@@ -35,8 +37,10 @@ print("="*20)
 print("METODO DA FALSA POSIÇÃO")
 print("="*20)
 
+op = int(input())
 
-for i in range(1, 3):
+
+for i in range(1, max_iteracoes+1):
     xr = (a*f(b)-b*f(a))/(f(b)-f(a))
 
     fxr = f(xr)
