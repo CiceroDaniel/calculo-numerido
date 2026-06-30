@@ -1,0 +1,2 @@
+# calculo-numerido
+TRABALHO DE CALCULO NUMÉRICO - 2026.01
