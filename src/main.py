@@ -9,3 +9,4 @@ OBJETIVO: Implemetntar o metodo da falsa posicao para encontrar a raiz de uma fu
 '''
 
 print("TRABALHO DE CALCULO NUMÉRICO - 2026.1")
+
