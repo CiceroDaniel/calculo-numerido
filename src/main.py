@@ -7,63 +7,82 @@ PROFESSOR:
 '''
 OBJETIVO: Implemetntar o metodo da falsa posicao para encontrar a raiz de uma função.
 '''
+# BIBLIOTECAS
 import math
 
-
+# TÍTULO
 print("TRABALHO DE CALCULO NUMÉRICO - 2026.1")
+
+# VARIÁVEIS DE TOLERÂNCIA DE ERRO E O MÁXIMO DE ITERAÇÕES PARA NAO ESTOURAR A MEMÓRIA
 
 tolerancia = 0.000001
 max_iteracoes = 100
 
+# FUNÇÃO QUE SERÁ USADA
 
 def f(x):
-    return math.sin(x)
+    return x**3-x-2
 
-
+# LAÇO DE REPETIÇÃO PARA PARA RECEBER O INTERVALO [a,b] SÓ PARA QUANDO A CONDIÇÃO f(a)*f(b) < 0 FOR VERDADEIRA
 
 while True: 
+
+    # RESCEBE O LIMITE INFERIOR E O SUPERIOR DO INTERVÁLO [a,b]
 
     a = float(input("Digite o valor de a: "))
     b = float(input("Digite o valor de b: "))
 
-    if f(a) * f(b) > 0:
+    # VERIFICA SE A CONDIÇÃO f(a)*f(b) < 0 É FALSA, SE HÁ MUDANÇA DE SINAL
+    
+    if f(a) * f(b) > 0: # SE NÃO HOUVER MUNDANÇA DE SINAL O INTERVALO NÃO POSSUE UMA RAIZ
         print("Erro!")
         print("O intervalo escolhido não possue uma raiz")
         print("Escolha outro intervalo")
-    else: break
+    else:
+        break
+
+# MÉTODO
 
 print("\n")
 print("="*20)
 print("METODO DA FALSA POSIÇÃO")
 print("="*20)
 
-op = int(input())
-
+# ALGORITIMO DO MÉTODO DA FALSA POSIÇÃO
 
 for i in range(1, max_iteracoes+1):
-    xr = (a*f(b)-b*f(a))/(f(b)-f(a))
 
+    # CALCULO O VALOR DE X APLICANDO A FORMULA DO MÉTODO 
+    xr = (a*f(b)-b*f(a))/(f(b)-f(a))
+    # CALCULA O VALOR DE f(x) COM O X OBTIDO ACIMA
     fxr = f(xr)
+
+    # IMPRIME OS VALORES DA ITERAÇÃO
 
     print("\n")
     print("="*20)
-    print(f"\nInterações:{i}")
+    print(f"ITERAÇÃO {i}")
+    print("="*20)
     print(f"Valor de a: {a:.6f}")
     print(f"Valor de b: {b:.6f}")
     print(f"Valor de xr: {xr:.6f}")
     print(f"Valor de f(xr): {fxr:.6f}")
     print("="*20)
 
-    if abs(fxr)<tolerancia:
+    # VERIFICA SE O MÓDULO DE f(x) É MENOR QUE A TOLERÂNCIA
+
+    if abs(fxr)<tolerancia: # SE O MÓDULO DE f(x) FOR MENOR QUE A TOLERÂNCIA ENTÃO A RAIZ FOI ENCONTRADA
         print(f"\nRaiz encontrada!")
         print(f"x = {xr:.6f}")
         break
 
-    if f(a) * fxr < 0:
+    # VERIFICA SE É NESCESSÁRIO SUBSTITUIR OS VALORES DE A OU B
+
+    if f(a) * fxr < 0: # SE f(a)*f(x) < 0, TROCA O VALOR DE B:  b = x
         b = xr
-    else:
+    else: # SE f(a)*f(x) > 0, TROCA O VALOR DE A:  a = x
         a = xr
 
-else: 
-    print("\nNúmero máximo de iterações atingido.")
-    print(f"Aproximação encontrada: {xr:.6f}")
+else: # CASO O NÚMERO MÁXIMO DE ITERÇÕES FOR ANTINGIDO, PRINTA O ULTIMO VALOR DE X OBTIDO
+    print("\n|Número máximo de iterações atingido.")
+    print(f"|Aproximação encontrada: {xr:.6f}\n")
