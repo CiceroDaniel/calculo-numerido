@@ -9,6 +9,8 @@ OBJETIVO: Implemetntar o metodo da falsa posicao para encontrar a raiz de uma fu
 '''
 # BIBLIOTECAS
 import math
+import matplotlib.pyplot as plt
+import numpy as np
 
 # TÍTULO
 print("TRABALHO DE CALCULO NUMÉRICO - 2026.1")
@@ -22,6 +24,60 @@ max_iteracoes = 100
 
 def f(x):
     return x**3-x-2
+
+# FUNÇÃO PARA CRIAR E IMPRIMIR O O GRÁFICO
+
+def Plotar_funcao(a, b, raiz):
+
+    # GERA VERIOS PONTOS PARA CRIAR A CURVA
+
+    x = np.linspace(a-1,b+1,400)
+
+    # CALCULO f(x) DE TODOS OS PONTOS ANTERIORES
+
+    y = f(x)
+
+    # CRIA A FIGURA
+
+    plt.figure(figsize=(8,5))
+
+    # DESENHA A FUNÇÃO
+
+    plt.plot(x,y,label="f(x) = x³ - x - 2")
+
+    # IMPRIME O EIXO X
+
+    plt.axhline(0)
+
+    # MARCA A RAIZ ENCONTRADA
+
+    plt.scatter(raiz,f(raiz),s=80,label="raiz")
+
+    # LINHA VERTICAL PASSANDO PELA RAIZ
+
+    plt.axvline(raiz, linestyle="--")
+
+    # TÍTULO
+
+    plt.title("MÉTODO DA FALSA POSIÇÃO")
+
+    # NOME DOS EIXOS
+
+    plt.xlabel("x")
+    plt.ylabel("f(x)")
+
+    # GRADE PARA VIZUALIZAÇÃO
+
+    plt.grid(True)
+
+    # LEGENDA
+
+    plt.legend()
+
+    # IMPRIME O GRÁFICO
+
+    plt.show()
+
 
 # LAÇO DE REPETIÇÃO PARA PARA RECEBER O INTERVALO [a,b] SÓ PARA QUANDO A CONDIÇÃO f(a)*f(b) < 0 FOR VERDADEIRA
 
@@ -74,6 +130,9 @@ for i in range(1, max_iteracoes+1):
     if abs(fxr)<tolerancia: # SE O MÓDULO DE f(x) FOR MENOR QUE A TOLERÂNCIA ENTÃO A RAIZ FOI ENCONTRADA
         print(f"\nRaiz encontrada!")
         print(f"x = {xr:.6f}")
+
+        Plotar_funcao(a,b,xr)
+
         break
 
     # VERIFICA SE É NESCESSÁRIO SUBSTITUIR OS VALORES DE A OU B
