@@ -1,29 +1,37 @@
 '''
 TRABALHO DE CALCULO NUMÉRICO - 2026.1
 ALUNO: CÍCERO DANIEL BARBOSA DOS SANTOS
-PROFESSOR:
+PROFESSOR: 
 '''
 
 '''
 OBJETIVO: Implemetntar o metodo da falsa posicao para encontrar a raiz de uma função.
 '''
 # BIBLIOTECAS
-import math
+
 import matplotlib.pyplot as plt
 import numpy as np
 
 # TÍTULO
+
 print("TRABALHO DE CALCULO NUMÉRICO - 2026.1")
+
+# MÉTODO
+
+print("\n")
+print("="*20)
+print("METODO DA FALSA POSIÇÃO")
+print("="*20)
 
 # VARIÁVEIS DE TOLERÂNCIA DE ERRO E O MÁXIMO DE ITERAÇÕES PARA NAO ESTOURAR A MEMÓRIA
 
 tolerancia = 0.000001
 max_iteracoes = 100
 
-# FUNÇÃO QUE SERÁ USADA
+# FUNÇÃO QUE SERÁ USADA NO MÉTODOS
 
 def f(x):
-    return x**3-x-2
+    return x**3-x-21
 
 # FUNÇÃO PARA CRIAR E IMPRIMIR O O GRÁFICO
 
@@ -96,13 +104,6 @@ while True:
         print("Escolha outro intervalo")
     else:
         break
-
-# MÉTODO
-
-print("\n")
-print("="*20)
-print("METODO DA FALSA POSIÇÃO")
-print("="*20)
 
 # ALGORITIMO DO MÉTODO DA FALSA POSIÇÃO
 
