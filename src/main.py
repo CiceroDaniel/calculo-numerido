@@ -113,7 +113,7 @@ b = np.pi/4
 
 # ALGORITIMO DO MÉTODO DA FALSA POSIÇÃO
 
-for i in range(0, max_iteracoes):
+for i in range(0, max_iteracoes+1):
 
     # CALCULO O VALOR DE X APLICANDO A FORMULA DO MÉTODO 
     
@@ -122,7 +122,7 @@ for i in range(0, max_iteracoes):
     # VERIFICA SE O MÓDULO DE f(x) É MENOR QUE A TOLERÂNCIA
 
     if xr_ant is not None:
-        if abs(xr-xr_ant)<tolerancia: # SE O MÓDULO DE f(x) FOR MENOR QUE A TOLERÂNCIA ENTÃO A RAIZ FOI ENCONTRADA
+        if abs(xr-xr_ant)<tolerancia:
             print("\nRaiz encontrada!")
             print(f"x = {xr:.10f}")
 
