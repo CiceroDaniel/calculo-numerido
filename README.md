@@ -17,6 +17,7 @@ $$
 x = \frac{a f(b) - b f(a)}{f(b) - f(a)}.
 $$
 
+
 Depois:
 
 - Se $f(a)⋅f(x)<0$, substitua $b=x$.

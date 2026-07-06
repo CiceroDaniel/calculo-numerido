@@ -23,19 +23,21 @@ print("="*20)
 print("METODO DA FALSA POSIÇÃO")
 print("="*20)
 
-# VARIÁVEIS DE TOLERÂNCIA DE ERRO E O MÁXIMO DE ITERAÇÕES PARA NAO ESTOURAR A MEMÓRIA
+# VARIÁVEIS
 
-tolerancia = 0.000001
+tolerancia = 0.0000000001
 max_iteracoes = 100
+xr_ant = 0
+xr = 0
 
 # FUNÇÃO QUE SERÁ USADA NO MÉTODOS
 
 def f(x):
-    return x**3-x-21
+    return np.cos(x)-x
 
 # FUNÇÃO PARA CRIAR E IMPRIMIR O O GRÁFICO
 
-def Plotar_funcao(a, b, raiz):
+def Plotar_grafico(a, b, raiz):
 
     # GERA VERIOS PONTOS PARA CRIAR A CURVA
 
@@ -51,7 +53,7 @@ def Plotar_funcao(a, b, raiz):
 
     # DESENHA A FUNÇÃO
 
-    plt.plot(x,y,label="f(x) = x³ - x - 2")
+    plt.plot(x,y,label="f(x) = cos(x) - x")
 
     # IMPRIME O EIXO X
 
@@ -89,7 +91,10 @@ def Plotar_funcao(a, b, raiz):
 
 # LAÇO DE REPETIÇÃO PARA PARA RECEBER O INTERVALO [a,b] SÓ PARA QUANDO A CONDIÇÃO f(a)*f(b) < 0 FOR VERDADEIRA
 
-while True: 
+a = 0.5
+b = np.pi/4
+
+'''while True: 
 
     # RESCEBE O LIMITE INFERIOR E O SUPERIOR DO INTERVÁLO [a,b]
 
@@ -104,13 +109,28 @@ while True:
         print("Escolha outro intervalo")
     else:
         break
+'''
 
 # ALGORITIMO DO MÉTODO DA FALSA POSIÇÃO
 
-for i in range(1, max_iteracoes+1):
+for i in range(0, max_iteracoes):
 
     # CALCULO O VALOR DE X APLICANDO A FORMULA DO MÉTODO 
+    
     xr = (a*f(b)-b*f(a))/(f(b)-f(a))
+
+    # VERIFICA SE O MÓDULO DE f(x) É MENOR QUE A TOLERÂNCIA
+
+    if xr_ant is not None:
+        if abs(xr-xr_ant)<tolerancia: # SE O MÓDULO DE f(x) FOR MENOR QUE A TOLERÂNCIA ENTÃO A RAIZ FOI ENCONTRADA
+            print("\nRaiz encontrada!")
+            print(f"x = {xr:.10f}")
+
+            Plotar_grafico(a,b,xr)
+
+            break
+    xr_ant = xr
+
     # CALCULA O VALOR DE f(x) COM O X OBTIDO ACIMA
     fxr = f(xr)
 
@@ -120,21 +140,13 @@ for i in range(1, max_iteracoes+1):
     print("="*20)
     print(f"ITERAÇÃO {i}")
     print("="*20)
-    print(f"Valor de a: {a:.6f}")
-    print(f"Valor de b: {b:.6f}")
-    print(f"Valor de xr: {xr:.6f}")
-    print(f"Valor de f(xr): {fxr:.6f}")
+    print(f"Valor de a: {a:.10f}")
+    print(f"Valor de b: {b:.10f}")
+    print(f"Valor de xr: {xr:.10f}")
+    print(f"Valor de f(xr): {fxr:.10f}")
+    print(f"Valor de xr_anterior: {xr_ant:.10f}")
     print("="*20)
 
-    # VERIFICA SE O MÓDULO DE f(x) É MENOR QUE A TOLERÂNCIA
-
-    if abs(fxr)<tolerancia: # SE O MÓDULO DE f(x) FOR MENOR QUE A TOLERÂNCIA ENTÃO A RAIZ FOI ENCONTRADA
-        print(f"\nRaiz encontrada!")
-        print(f"x = {xr:.6f}")
-
-        Plotar_funcao(a,b,xr)
-
-        break
 
     # VERIFICA SE É NESCESSÁRIO SUBSTITUIR OS VALORES DE A OU B
 
@@ -145,4 +157,4 @@ for i in range(1, max_iteracoes+1):
 
 else: # CASO O NÚMERO MÁXIMO DE ITERÇÕES FOR ANTINGIDO, PRINTA O ULTIMO VALOR DE X OBTIDO
     print("\n|Número máximo de iterações atingido.")
-    print(f"|Aproximação encontrada: {xr:.6f}\n")
+    print(f"|Aproximação encontrada: {xr:.10f}\n")
