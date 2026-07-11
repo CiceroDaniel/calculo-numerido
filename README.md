@@ -1,4 +1,5 @@
 # TRABALHO DE CALCULO NUMÉRICO - 2026.1
+
 ALUNO: CÍCERO DANIEL BARBOSA DOS SANTOS
 
 OBJETIVO: Implemetntar o metodo da falsa posicao para encontrar a raiz de uma função.

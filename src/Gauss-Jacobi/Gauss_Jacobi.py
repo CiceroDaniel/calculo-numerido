@@ -8,7 +8,7 @@ import numpy as np
 
 tolerancia = 1e-4
 
-# SISTEMAS QUE SERÃO USADOS
+# SISTEMAS QUE SERÃO USADOS 
 
 # Sistema A (4x4)
 
