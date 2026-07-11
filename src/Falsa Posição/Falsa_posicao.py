@@ -79,7 +79,6 @@ def Plotar_grafico(a, b, raiz):
 
     plt.show()
 
-
 # LAÇO DE REPETIÇÃO PARA PARA RECEBER O INTERVALO [a,b] SÓ PARA QUANDO A CONDIÇÃO f(a)*f(b) < 0 FOR VERDADEIRA
 
 a = 0.5
