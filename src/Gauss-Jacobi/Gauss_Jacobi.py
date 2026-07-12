@@ -77,7 +77,7 @@ def gauss_jacobi(S,b,Tol,max_iteracoes):
             )
 
         # Condição de parada
-        if erro < tolerancia:
+        if erro < Tol:
             print(f"\nConvergiu em {k+1} iterações")
             return x_novo, k+1, True
         
